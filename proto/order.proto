@@ -1,0 +1,42 @@
+syntax = "proto3";
+option go_package ="/protob";
+package protob;
+
+service OrderGrpc{
+    rpc OrderTaxi(orderRequest) returns (orderResponse){}
+    rpc FindDriver(findDriverRequest)returns(findDriverResponse){}
+  }
+
+  enum CarType{
+    economy = 0;
+    comfort = 1;
+    business =2;
+  }
+
+  message orderRequest{
+    int32 userid = 1;
+    CarType type =2;
+    string from =3 ;
+    string to = 4;
+    
+  }
+  
+  message orderResponse{
+    int32 driverid = 1;
+    CarType type =2;
+    string from =3 ;
+    string to = 4;
+  }
+
+  message findDriverRequest{
+    int32 userid = 1;
+    CarType type =2;
+  }
+  
+  message findDriverResponse{
+    int32 driverid = 1;
+    CarType type =2;
+   
+  }
+
+  
